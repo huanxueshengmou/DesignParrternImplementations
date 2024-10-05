@@ -11,3 +11,5 @@
 提示：你可以在ProxyImage中维护一个RealImage的引用，并在display方法中实现延迟加载的逻辑。如果图片未加载，则显示占位符；如果加载完成，则显示实际图片
 
 !["proxy_2 UML"](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241005231425.png)
+
+Implemented Proxy pattern in C++
