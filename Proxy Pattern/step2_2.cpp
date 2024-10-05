@@ -10,7 +10,7 @@ class Image{
   virtual void display(string url)=0;
 };
 
-class RealImage:Image{
+class RealImage:public Image{
   public:
   RealImage(string alternateText){
     this->alternateText=alternateText;
@@ -33,11 +33,11 @@ class RealImage:Image{
 };
 class ProxyImage{
   public:
-  ProxyImage(RealImage* realImage){
+  ProxyImage(Image* realImage){
     this->realImage=realImage;
   }
   protected:
-  RealImage* realImage;
+  Image* realImage;
   public:
   void initImage(){
     realImage->display("");
