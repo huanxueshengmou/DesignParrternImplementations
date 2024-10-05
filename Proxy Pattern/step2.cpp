@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include "my_print.cpp"
 
@@ -41,14 +42,40 @@ class RealImage:Image{
     this->isSetImage=true;
     return *this;
   }
+  string getUrl(){
+    return this->url;
+  }
+};
+class ProxyImage{
+  public:
+  ProxyImage(RealImage* realImage){
+    this->realImage=realImage;
+  }
+  protected:
+  RealImage* realImage;
+  public:
+  void initImage(){
+    realImage->setUrl("loading...").display();
+  }
+  void setUrl(string url){
+    realImage->setUrl(url);
+  }
+  void displayImage(){
+    realImage->setUrl(realImage->getUrl()).display();
+  }
 };
 int main(){
-  Image* image=new Image("image of DesignPattern");
-  RealImage* realImage=new RealImage("image of DesignPattern");
-  image->display();
-  realImage->setUrl("https://learngitbranching.js.org/").display();
+  RealImage* image=new RealImage("image of DesignPattern");
+  ProxyImage* myProxyImage=new ProxyImage(image);
+  print("Initializing... ");
+  myProxyImage->initImage();
+  myProxyImage->setUrl("https://learngitbranching.js.org/");
+  print("Displaying...");
+  myProxyImage->displayImage();
 }
 /* output:
-  ![image of DesignPattern]()
+  Initializing... 
+  ![image of DesignPattern](loading...)
+  Displaying...
   ![image of DesignPattern](https://learngitbranching.js.org/)
 */ 
