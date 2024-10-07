@@ -1,4 +1,4 @@
-package GameA;
+package Proxy.Pattern.java.demo01.src.Text.java;
 
 public class Text {
     public static void main(String[] args) {

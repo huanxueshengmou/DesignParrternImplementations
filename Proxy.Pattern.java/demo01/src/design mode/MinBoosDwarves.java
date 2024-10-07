@@ -1,4 +1,4 @@
-package GameA;
+package Proxy.Pattern.java.demo01.src.MinBoosDwarves.java;
 
 public class MinBoosDwarves implements MinBoos{
     @Override
