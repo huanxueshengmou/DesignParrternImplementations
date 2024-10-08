@@ -9,3 +9,13 @@
 待支付->已支付->已发货
 
 待支付->已取消
+
+![step1 UML](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241008230920.png)
+
+## 问题 2：考虑错误处理
+
+问题 2： 如果在处理支付或发货过程中出现错误怎么办？例如，支付失败或发货地址错误。
+
+提示：你可以为这些情况引入异常处理或特定的状态，比如PaymentFailedState或ShippingErrorState
+
+![step1_Improved UML](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241008231307.png)
