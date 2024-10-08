@@ -66,7 +66,7 @@ public:
   }
   void sendUser_2(Message *message) override
   {
-    print("user2 receive:");
+    print("user1 receive:");
     user1->receive(message);
   }
 };
