@@ -6,8 +6,12 @@
 问题 2：引入备忘录管理器
 现在我们的编辑器能够保存和恢复状态了。下一个步骤是如何管理多个备忘录状态，例如实现一个完整的撤销和重做功能。
 
+![step1 UML](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241008192613.png)
+
 ## 问题 2： 怎样实现一个备忘录管理器，来维护一个备忘录对象的列表，支持撤销（undo）和重做（redo）操作？
 
 提示：你可以设计一个Caretaker类，它包含两个堆栈，分别用于存储已执行撤销的备忘录和可以重做的备忘录。
 
 请根据这个新需求设计并实现备忘录管理器。这将使你的编辑器更加强大，用户体验更佳
+
+![step2 UML](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241008192836.png)

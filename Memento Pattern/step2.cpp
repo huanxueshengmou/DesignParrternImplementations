@@ -96,6 +96,20 @@ public:
     undoMemento.pop();
     return undoMemento;
   }
+  void destroyUndoMemento (){
+     while (!getUndoMemento().empty())
+      {
+        delete getUndoMemento().top();
+        POPUndoMemento();
+      }
+  }
+  void destroyDeletedMemento (){
+    while (!getDeletedMemento().empty())
+      {
+        delete getDeletedMemento().top();
+        POPDeleteMemento();
+      }
+  }
 };
 
 int main()
@@ -134,18 +148,10 @@ int main()
   editor.printText(); // Outputs: Initial text
 
   // Cleaning up Mementos to prevent memory leaks
-  while (!caretaker.getUndoMemento().empty())
-  {
-    delete caretaker.getUndoMemento().top();
-    caretaker.POPUndoMemento();
-  }
-  while (!caretaker.getDeletedMemento().empty())
-  {
-    delete caretaker.getDeletedMemento().top();
-    caretaker.POPDeleteMemento();
-  }
+  caretaker.destroyUndoMemento();
+  caretaker.destroyDeletedMemento();
 
-  return 0;
+  return 0;  
 }
 
 /*
@@ -154,5 +160,5 @@ Initial text
 Second version of text
 Third version of text
 Second version of text
-Initial text
+Initial text 
 */
