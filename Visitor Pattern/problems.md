@@ -4,8 +4,12 @@
 
 提示：创建一个Graphic接口，其中包含一个accept(GraphicVisitor&)方法。GraphicVisitor接口应该有visitCircle(Circle&)、visitRectangle(Rectangle&)和visitLine(Line&)方法
 
+![step1 UML](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241009230728.png)
+
 ## 问题 2: 如何使用访问者模式来处理图形的不同表示形式？
 
 例如，如果您想要为每种图形类增加一个新的操作，比如计算图形的周长，您会如何扩展当前的系统？您可以考虑创建一个新的访问者类来处理这些操作。
 
 这种方式允许您在不修改图形类的前提下，通过添加新的访问者来增加新的操作，这展示了访问者模式的强大扩展性。
+
+![step2.cpp UML](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241009231431.png)
