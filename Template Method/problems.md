@@ -6,6 +6,8 @@
 
 提示：Beverage类可以有一个名为prepareRecipe的模板方法，这个方法按顺序调用其他几个方法，例如boilWater(), brew(), pourInCup(), 和addCondiments()。其中，brew() 和 addCondiments() 应该是抽象方法，因为它们依赖于具体饮料的类型
 
+![step1 UML](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241009220750.png)
+
 ## 问题 2：适应新变化
 
 问题 2: 如果我们需要为Beverage类添加新的饮料类型，例如热巧克力，并且这种饮料有一些独特的步骤，例如在热水中加入巧克力粉，你会如何设计？
