@@ -14,3 +14,9 @@
 具体状态实现：
 
 StateECommerce 类目前包含所有可能的状态行为，而更合理的实现是为每种状态（如待支付、已支付、已发货、已取消）创建单独的状态类
+
+---
+
+![State](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/State_Design_Pattern_UML_Class_Diagram.svg.png)
+![step1 UML](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241008230920.png)
+![step1_Improved UML](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241008231307.png)

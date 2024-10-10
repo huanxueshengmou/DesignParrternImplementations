@@ -30,3 +30,11 @@ WeatherSubject 的 WeatherJson 存储了多条信息，但每次更新后只会�
 通知和警报逻辑：
 
 alert 方法当前是硬编码在 update 方法中，这可能不够灵活。在实际应用中，你可能希望根据特定条件触发警报，比如只有在温度超过某个阈值时才发出警报
+
+---
+
+![Observer UML](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/Observer.jpg)
+
+![Observer UML](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241010175910.png)
+
+![step2 UML](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241008215438.png)
