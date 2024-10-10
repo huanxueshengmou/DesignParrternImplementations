@@ -31,3 +31,6 @@
 在一个实际的应用中，用户界面的反馈对于撤销和重做功能的易用性至关重要。你可以考虑如何在用户界面上更直观地展示可用的撤销和重做步骤，以及当前的状态。
 
 ---
+
+![Memento](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241010193149.png)
+![step2 UML](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241008192836.png)

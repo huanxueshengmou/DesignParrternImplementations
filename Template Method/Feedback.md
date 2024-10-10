@@ -11,3 +11,8 @@
 钩子方法：
 
 在模板方法模式中，可以提供所谓的钩子方法（hook methods），这些方法在基类中通常什么都不做或只做很少的工作，但它们提供了一个接口，子类可以覆盖这些方法以便在算法中加入额外的行为
+
+---
+
+![step1 UML](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241009220750.png)
+![Template UML](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/Template_Method_UML.svg.png)

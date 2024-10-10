@@ -10,3 +10,8 @@
 
 - 问题3
 考虑让ProxyImage也实现Image接口。这样可以提高代码的一致性和可替换性，允许ProxyImage在任何需要Image对象的地方被透明地使用
+
+---
+
+![Proxy](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/Proxy.jpg)
+!["proxy_2 UML"](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241005231425.png)

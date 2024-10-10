@@ -35,3 +35,7 @@ int main(){
   adapterLogger->logInfo("this is Info message");
 
 }
+/*output:
+  Old Log: this is error message
+  Old Log: this is Info message
+*/ 

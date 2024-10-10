@@ -11,3 +11,6 @@
 - 工厂方法改进：当前的setCharacter方法实际上不仅设置当前字符，还将字符添加到工厂的集合中。更清晰的实现应该是将这两个功能分开，确保每个方法只执行一个功能
 
 ---
+
+![设计后的uml关系图](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241005013651.png)
+![Flyweight](https://cdn.jsdelivr.net/gh/huanxueshengmou/picture-host/20241010192248.png)
