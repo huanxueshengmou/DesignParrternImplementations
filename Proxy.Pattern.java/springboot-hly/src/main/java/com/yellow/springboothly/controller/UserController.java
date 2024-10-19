@@ -1,15 +1,15 @@
 package com.yellow.springboothly.controller;
 
 import com.yellow.springboothly.Utils.JwtUtil;
+import com.yellow.springboothly.Utils.ThreadLocalUtil;
 import com.yellow.springboothly.pojo.Result;
 import com.yellow.springboothly.Utils.JwtUtil;
 import com.yellow.springboothly.pojo.User;
 import com.yellow.springboothly.service.UserService;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,4 +59,30 @@ public class UserController {
         }
         return Result.error("密码错误!!!");
     }
+
+//使用拦截器
+    @GetMapping("/userInfo")
+    //根据用户id获取用户信息，通过请求头获取
+    public Result<User> userInfo(/*@RequestHeader(name="Authorization") String token*/){
+        //根据用户名查询用户信息
+        //Map<String,Object> map=JwtUtil.parseToken(token);
+        //String username=(String) map.get("username");
+        Map<String,Object> map=ThreadLocalUtil.get();
+        String username=(String) map.get("username");
+        User user=userService.findByUserName(username);
+        //将user响应给浏览器
+        return Result.success(user);
+    }
+
+//未使用ThreadLocal前的代码
+    /*@GetMapping("/userInfo")
+    //根据用户id获取用户信息，通过请求头获取
+    public Result<User> userInfo(@RequestHeader(name="Authorization") String token){
+        //根据用户名查询用户信息
+        Map<String,Object> map=JwtUtil.parseToken(token);
+        String username=(String) map.get("username");
+        User user=userService.findByUserName(username);
+        //将user响应给浏览器
+        return Result.success(user);
+    }*/
 }

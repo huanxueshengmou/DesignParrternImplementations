@@ -1,6 +1,7 @@
 package com.yellow.springboothly.Interceptors;
 
 import com.yellow.springboothly.Utils.JwtUtil;
+import com.yellow.springboothly.Utils.ThreadLocalUtil;
 import com.yellow.springboothly.pojo.Result;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,6 +19,8 @@ public class LoginInterceptor implements HandlerInterceptor {
         //验证token，成功则可进入查询文章所有数据
         try {
             Map<String,Object> claims= JwtUtil.parseToken(token);
+            //把业务数据存储在Threadlocal中
+            ThreadLocalUtil.set(claims);
             return true;//验证成功，放行
 
         } catch (Exception e) {
@@ -25,5 +28,12 @@ public class LoginInterceptor implements HandlerInterceptor {
             response.setStatus(401);
             return false;//校验失败不放行
         }
+    }
+
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        //清空Threadlocal中的数据,防止内存泄露
+        ThreadLocalUtil.remove();
+
     }
 }
