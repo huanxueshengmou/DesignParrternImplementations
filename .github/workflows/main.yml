@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # 使用最新的 Ubuntu 环境
+    runs-on: ubuntu-latest
 
     steps:
     # 1. 检出代码库
@@ -21,26 +21,41 @@ jobs:
     - name: Setup Node.js environment
       uses: actions/setup-node@v4.1.0
       with:
-        node-version: '16'  # 设定 Node.js 的版本（例如 16）
-        architecture: 'x64'  # 使用默认的系统架构 (x64)
-        check-latest: true   # 确保使用满足版本规格的最新 Node.js
+        node-version: '16'  # 设定 Node.js 的版本
+        check-latest: true
 
-    # 3. 安装依赖 (使用 npm)
+    # 3. 验证依赖管理文件是否存在
+    - name: Check package.json
+      run: test -f package.json && echo "package.json exists" || echo "package.json not found"
+      working-directory: ./myproject
+
+    # 4. 安装依赖（添加重试机制，防止网络问题）
     - name: Install dependencies
-      run: npm install
-      working-directory: ./myproject  # 确保在 ./myproject 目录下执行
+      run: |
+        npm install || npm install
+      working-directory: ./myproject
 
-    # 4. 构建项目
+    # 5. 检查安装后的依赖
+    - name: Verify dependencies
+      run: npm list
+      working-directory: ./myproject
+
+    # 6. 构建项目（添加日志和构建失败处理）
     - name: Build Vue project
-      run: npm run build
-      working-directory: ./myproject  # 在 ./myproject 目录下运行构建命令
+      run: |
+        echo "Starting build process"
+        npm run build || { echo "Build failed"; exit 1; }
+      working-directory: ./myproject
 
-    # 5. 上传构建产物
+    # 7. 检查构建产物是否存在
+    - name: Verify build output
+      run: test -d ./myproject/dist && echo "Build output exists" || { echo "Build output not found"; exit 1; }
+
+    # 8. 上传构建产物
     - name: Upload build artifact
       uses: actions/upload-artifact@v4.4.3
       with:
-        name: vue-build-artifact  # 构建产物的名字，随便设置一个好记的名字
-        path: myproject/dist  # 构建完成后 Vue.js 项目产物的目录
-        if-no-files-found: warn  # 如果找不到文件，输出警告但不失败
-        retention-days: 7  # 保留产物的时间为 7 天，最长可以是 90 天
-        compression-level: 6  # 压缩级别为 6（适中的压缩效率和速度）
+        name: vue-build-artifact
+        path: myproject/dist
+        if-no-files-found: warn
+        retention-days: 7
